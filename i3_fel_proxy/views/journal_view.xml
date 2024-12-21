@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+
+
+
+
+	 <record id="view_journal_fel_extra_5" model="ir.ui.view">
+			<field name="name">view.journal.fel.extra.5</field>
+			<field name="model">account.journal</field>
+			<field name="inherit_id" ref="account.view_account_journal_form"/>
+			<field name="arch" type="xml">
+				<data>
+
+					<xpath expr="//form/sheet/notebook/page[@name='bank_account']" position="after">
+
+						<page name="fel" string="FEL">
+							<group name="extra" string="FEL">
+								<group>
+									<field name="generar_fel" widget="boolean_toggle"/>
+									<field name="generar_corr_interno" widget="boolean_toggle"/>
+									<field name="error_en_historial_fel" widget="boolean_toggle" />
+									<field name="tipo_dte" widget="list"/>
+									<field name="direccion" />
+									<field name="codigo_establecimiento" />
+									<field name="codigo_unidad_gravable" />
+								</group>
+							</group>
+						</page>
+					</xpath>
+				</data>
+			</field>
+		</record> 
+		
+
+
+
+		<record id="account_invoice_filter_extra_fel_1" model="ir.ui.view">
+			<field name="name">account.invoice.filter.extra.fel.1</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_account_invoice_filter"/>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='name']" position="after">
+					<separator/>
+					<field name="serie_fel" string="SERIE FEL" filter_domain="[('serie_fel','ilike',self)]"/>
+					<field name="correlativo_fact_empresa" string="CORR. INTERNO" filter_domain="[('correlativo_fact_empresa','ilike',self)]"/>
+					<field name="numero_dte_sat" string="NUMERO SAT" filter_domain="[('numero_dte_sat','ilike',self)]"/>
+
+				</xpath>
+			</field>
+		</record>
+
+
+	</data>
+
+</odoo>

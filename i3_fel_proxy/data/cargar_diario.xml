@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="record_diario_prueba" model="account.journal">
+            <field name="name">FACT FELPLEX/I3</field>
+            <field name="sequence">1</field>
+            <field name="type">sale</field>
+            <field name="code">DEMO1</field>
+            <field name="generar_fel">True</field>
+            <field name="tipo_dte">FACT</field>
+            <field name="direccion">1</field>
+            <field name="codigo_establecimiento">2</field>
+            <field name="codigo_unidad_gravable">1</field>
+        </record>            
+    </data>
+</odoo>
