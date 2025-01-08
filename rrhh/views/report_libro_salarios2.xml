@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+<template id="libro_salarios">
+    <t t-foreach="docs" t-as="doc">
+        <t t-call="report.external_layout">
+
+            <t t-call="report.internal_layout">
+                <div class="page">
+                    <div class="oe_structure"/>
+
+                        <table style="margin:0px auto 0px auto">
+                            <tr>
+                                <td style="width:1000px;text-align:center;">NOMBRE ó  RAZON  SOCIAL  DE  LA  EMPRESA  ó  ENTIDAD</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">Número  de  Identificación  Tributaria (NIT)</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;"> LIBRO  DE  SALARIOS   PARA   TRABAJADORES   PERMANENTES</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;">AUTORIZADO POR EL MINISTERIO DE TRABAJO Y PREVISION SOCIAL,  SEGÚN  ARTÍCULO 102  DEL CODIGO  DE TRABAJO</td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <br/>
+                        <table style="margin:0px auto 0px auto">
+                            <tr>
+                                <td style="width:150px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['nombre']"/></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['edad']"/></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['sexo']"/></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['nacionalidad']"/></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['ocupacion']"/></td>
+                            </tr>
+                            <tr>
+                                <td style="height:1px;background-color:#000000"></td>
+                                <td></td>
+                                <td style="height:1px;background-color:#000000"></td>
+                                <td></td>
+                                <td style="height:1px;background-color:#000000"></td>
+                                <td></td>
+                                <td style="height:1px;background-color:#000000"></td>
+                                <td></td>
+                                <td style="height:1px;background-color:#000000"></td>
+                            </tr>
+                            <tr>
+                                <td style="width:150px;text-align:center"><span>Nombre del trabajador</span></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span>Edad</span></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span>Sexo</span></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span>Nacionalidad</span></td>
+                                <td style="width:120px"></td>
+                                <td style="width:150px;text-align:center"><span>Ocupacion</span></td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <br/>
+                        <table style="margin:0px auto 0px auto">
+                            <tr>
+                                <td style="width:200px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['igss']"/></td>
+                                <td style="width:120px"></td>
+                                <td style="width:200px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['dpi']"/></td>
+                                <td style="width:120px"></td>
+                                <td style="width:200px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['fecha_inicio']"/></td>
+                                <td style="width:120px"></td>
+                                <td style="width:200px;text-align:center"><span t-esc="encabezado(cursor, uid, doc)['fecha_fin']"/></td>
+                            </tr>
+                            <tr>
+                                <td style="height:1px;background-color:#000000"></td>
+                                <td></td>
+                                <td style="height:1px;background-color:#000000"></td>
+                                <td></td>
+                                <td style="height:1px;background-color:#000000"></td>
+                                <td></td>
+                                <td style="height:1px;background-color:#000000"></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center"><span>No. de afiliacion al IGSS</span></td>
+                                <td></td>
+                                <td style="text-align:center"><span>No. DPI o permiso de Trabajo</span></td>
+                                <td></td>
+                                <td style="text-align:center"><span>Fecha de Ingreso</span></td>
+                                <td></td>
+                                <td style="text-align:center"><span>Fecha finalizac. de relacion laboral</span></td>
+                            </tr>
+                        </table>
+                        <br/>
+                        <br/>
+
+                        <table style="margin:0px auto 0px auto">
+                            <thead>
+                                <tr style="border: 1px solid black"> 
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">No. de orden</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Periodo de trabajo</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Salario en Quetzales</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Dias trabajados</div></th>
+                                    <th colspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">HORAS TRABAJADAS</div></th>
+                                    <th colspan="4" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">SALARIO DEVENGADO</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">SALARIO TOTAL</div></th>
+                                    <th colspan="3" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">DEDUCCIONES LEGALES</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Decreto 42-92, Aguinaldo, y otros</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Bonificacion Incentivo Dec. 37-2001</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Liquido a Recibir</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">FIRMA</div></th>
+                                    <th rowspan="2" style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Observaciones</div></th>
+                                </tr>
+                                <tr style="border: 1px solid black"> 
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Ordinarias</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Extra ordinarias</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Ordinario</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Extra ordinario</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Septimos y asuetos</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Vacaciones</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">IGSS</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">Otras deducciones</div></th>
+                                    <th style="border: 1px solid black;vertical-align:middle"><div style="text-align:center">TOTAL DEDUCCIONES</div></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="lineas(cursor, uid, doc)" t-as="l">
+                                    <td style="text-align:center"><span t-esc="l['numero_orden']"/></td>
+                                    <td style="text-align:center"><span t-esc="l['periodo']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['salario']"/></td>
+                                    <td style="text-align:center"><span t-esc="l['dias_trabajados']"/></td>
+                                    <td style="text-align:center"><span t-esc="l['horas_ordinarias']"/></td>
+                                    <td style="text-align:center"><span t-esc="l['horas_extra_ordinarias']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['salario_ordinario']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['salario_extra_ordinario']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['septimos_asuetos']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['vacaciones']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['salario_total']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['igss']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['otras_deducciones_legales']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['total_deducciones']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['decreto_42_92']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['bonificacion_incentivo']"/></td>
+                                    <td style="text-align:right"><span t-esc="l['liquido_recibir']"/></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </t>
+    </t>
+</template>
+</data>
+</openerp>

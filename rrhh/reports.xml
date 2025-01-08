@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <report
+            id="rrhh_recibo"
+            string="Recibo de pago"
+            model="hr.payslip"
+            report_type="qweb-pdf"
+            file="rrhh.recibo"
+            name="rrhh.recibo"
+        />
+
+        <report 
+            id="rrhh_libro_salarios2" 
+            string="Libro de Salarios" 
+            model="hr.employee" 
+            report_type="qweb-pdf" 
+            file="rrhh.libro_salarios" 
+            name="rrhh.libro_salarios"
+        />
+
+    </data>
+</openerp>
