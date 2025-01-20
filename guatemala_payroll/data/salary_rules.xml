@@ -1,0 +1,39 @@
+
+<odoo>
+    <record id="rule_igss" model="hr.salary.rule">
+        <field name="name">IGSS (4.83%)</field>
+        <field name="code">IGSS</field>
+        <field name="sequence">10</field>
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+            result = contract.wage * 0.0483
+        </field>
+    </record>
+
+    <record id="rule_isr" model="hr.salary.rule">
+        <field name="name">ISR (5%)</field>
+        <field name="code">ISR</field>
+        <field name="sequence">20</field>
+        <field name="category_id" ref="hr_payroll.DED"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+            result = contract.wage * 0.05
+        </field>
+    </record>
+
+    <record id="rule_bonificacion" model="hr.salary.rule">
+        <field name="name">Bonificación Incentivo</field>
+        <field name="code">BONO_INCENTIVO</field>
+        <field name="sequence">30</field>
+        <field name="category_id" ref="hr_payroll.ALW"/>
+        <field name="condition_select">none</field>
+        <field name="amount_select">code</field>
+        <field name="amount_python_compute">
+            result = 250
+        </field>
+    </record>
+</odoo>
+
