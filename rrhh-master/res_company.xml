@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="rrhh.view_company_form" model="ir.ui.view">
+            <field name="name">rrhh.res.company.form</field>
+            <field name="model">res.company</field>
+	        <field name="inherit_id" ref="base.view_company_form"/>
+	        <field name="arch" type="xml">
+                <data>
+                    <page string="Report Configuration" position="after">
+                        <page string="IGSS">
+                            <group string="Patrono">
+                                <group>
+                                    <field name="version_mensaje"/>
+                                    <field name="numero_patronal"/>
+                                </group>
+                                <group>
+                                    <field name="tipo_planilla"/>
+                                </group>
+                            </group>
+                            <group string="Centros">
+                                <group>
+                                    <field name="codigo_centro_trabajo"/>
+                                    <field name="nombre_centro_trabajo"/>
+                                    <field name="direccion_centro_trabajo"/>
+                                    <field name="zona_centro_trabajo"/>
+                                    <field name="telefonos"/>
+                                    <field name="fax"/>
+                                </group>
+                                <group>
+                                    <field name="nombre_contacto"/>
+                                    <field name="correo_electronico"/>
+                                    <field name="codigo_departamento"/>
+                                    <field name="codigo_municipio"/>
+                                    <field name="codigo_actividad_economica"/>
+                                </group>
+                            </group>
+                            <group string="Tipos de planilla">
+                                <group>
+                                    <field name="identificacion_tipo_planilla"/>
+                                    <field name="nombre_tipo_planilla"/>
+                                    <field name="tipo_afiliados"/>
+                                    <field name="periodo_planilla"/>
+                                </group>
+                                <group>
+                                    <field name="departamento_republica"/>
+                                    <field name="actividad_economica"/>
+                                    <field name="clase_planilla"/>
+                                </group>
+                            </group>
+                        </page>
+                    </page>
+                </data>
+	        </field>
+	    </record>
+
+     </data>
+</openerp>

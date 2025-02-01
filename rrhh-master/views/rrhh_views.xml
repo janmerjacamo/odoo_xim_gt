@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+      <record id="rrhh_prestamo_view_search" model="ir.ui.view">
+          <field name="name">rrhh.prestamo.view.search</field>
+          <field name="model">rrhh.prestamo</field>
+          <field name="arch" type="xml">
+              <search string="Buscar prestamos">
+                  <field name="employee_id" string="Prestamos"/>
+                  <field name="fecha_inicio"/>
+                  <field name="numero_descuentos"/>
+                  <field name="total"/>
+                  <field name="mensualidad"/>
+                  <field name="descripcion"/>
+                  <field name="codigo"/>
+                  <separator />
+                  <filter string="Current Employee" name="current_employee" domain="[('employee_id.active','=',True)]"/>
+                  <separator/>
+                  <group expand="0" string="Group By">
+                      <filter string="Employee" domain="[]" context="{'group_by':'employee_id'}"/>
+                  </group>
+              </search>
+          </field>
+      </record>
+
+      <record id="rrhh_prestamo_view_form" model="ir.ui.view">
+          <field name="name">rrhh.prestamo.view.form</field>
+          <field name="model">rrhh.prestamo</field>
+          <field name="arch" type="xml">
+              <form string="Prestamo">
+                  <header>
+                      <button string="Procesar" name="prestamos" type="object" class="oe_highlight"/>
+                      <field name="estado" widget="statusbar"/>
+                  </header>
+                  <group>
+                      <group>
+                          <field name="fecha_inicio"/>
+                          <field name="numero_descuentos"/>
+                          <field name="employee_id"/>
+                      </group>
+                      <group>
+                          <field name="total"/>
+                          <field name="mensualidad"/>
+                          <field name="descripcion"/>
+                          <field name="codigo"/>
+                      </group>
+                  </group>
+                  <group>
+                  <field name="prestamo_ids">
+                      <tree editable="bottom">
+                          <field name="mes" attrs="{'readonly':[('nomina_id','!=',False)]}"/>
+                          <field name="anio" attrs="{'readonly':[('nomina_id','!=',False)]}"/>
+                          <field name="monto" attrs="{'readonly':[('nomina_id','!=',False)]}"/>
+                          <field name="nomina_id" attrs="{'readonly':[('nomina_id','!=',False)]}"/>
+                      </tree>
+                  </field>
+                  </group>
+              </form>
+          </field>
+      </record>
+
+      <record id="rrhh_prestamo_view_tree" model="ir.ui.view">
+          <field name="name">rrhh.prestamo.view.tree</field>
+          <field name="model">rrhh.prestamo</field>
+          <field name="arch" type="xml">
+              <tree string="Prestamos">
+                  <field name="employee_id"/>
+                  <field name="fecha_inicio"/>
+                  <field name="numero_descuentos"/>
+                  <field name="total"/>
+                  <field name="mensualidad"/>
+                  <field name="descripcion"/>
+                  <field name="codigo"/>
+              </tree>
+          </field>
+      </record>
+
+      <record id="rrhh_view_employee_prestamo_linea_form" model="ir.ui.view">
+          <field name="name">rrhh.employee.prestamo.linea.form</field>
+          <field name="model">rrhh.prestamo.linea</field>
+          <field name="arch" type="xml">
+              <form string="Montos">
+                  <group>
+                      <group>
+                          <field name="mes"/>
+                          <field name="monto"/>
+                      </group>
+                  </group>
+              </form>
+          </field>
+      </record>
+
+      <record id="action_rrhh_prestamo" model="ir.actions.act_window">
+          <field name="name">Prestamos</field>
+          <field name="res_model">rrhh.prestamo</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+          <field name="domain">[]</field>
+          <field name="context">{'search_default_current':1}</field>
+          <field name="search_view_id" ref="rrhh_prestamo_view_search"/>
+      </record>
+
+      <menuitem action="action_rrhh_prestamo" id="hr_menu_prestamo" parent="hr.menu_hr_main" name="Prestamos" sequence="4" groups="base.group_hr_manager"/>
+
+
+    </data>
+</openerp>

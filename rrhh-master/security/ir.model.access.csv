@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_rrhh_prestamo_usuario,rrhh.prestamo.usuario,model_rrhh_prestamo,base.group_user,1,0,0,0
+access_rrhh_prestamo_manager,rrhh.prestamo.manager,model_rrhh_prestamo,base.group_hr_manager,1,1,1,1
+access_rrhh_prestamo_linea_usuario,rrhh.prestamo.linea.usuario,model_rrhh_prestamo_linea,base.group_user,1,0,0,0
+access_rrhh_prestamo_linea_manager,rrhh.prestamo.linea.manager,model_rrhh_prestamo_linea,base.group_hr_manager,1,1,1,1

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <template id="recibo">
+            <t t-call="report.html_container">
+
+                <t t-set="data_report_margin_top" t-value="12"/>
+                <t t-set="data_report_header_spacing" t-value="9"/>
+                <t t-set="data_report_dpi" t-value="110"/>
+
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="report.internal_layout">
+                        <div class="page">
+                            <h2>Recibo</h2>
+
+                            <p t-field="o.name"/>
+
+                            <p>
+                                Boleta de pago correspondiente al periodo del:
+                                <span t-field="o.date_from"/> al <span t-field="o.date_to"/>
+                            </p>
+
+                            <table class="table table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Codigo:</strong> <span t-field="o.employee_id.otherid"/></td>
+                                        <td><strong>Empleado:</strong> <span t-field="o.employee_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Departamento:</strong> <span t-field="o.employee_id.department_id.name"/></td>
+                                        <td><strong>Puesto:</strong> <span t-field="o.employee_id.job_id.name"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>No. afiliacion del IGSS:</strong><span t-field="o.employee_id.igss"/></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Sueldo base mensual:</strong> <span t-field="o.contract_id.wage"/></td>
+                                        <td><strong>Dias laborados:</strong> <span t-esc="', '.join([str(x.number_of_days) for x in o.worked_days_line_ids])"/></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <strong>Ingresos</strong>
+                                </div>
+                                <div class="col-xs-6">
+                                    <strong>Deducciones</strong>
+                                </div>
+                            </div>
+                            <div class="row" t-foreach="lineas(o)['lineas']" t-as="l">
+                                <div class="col-xs-3">
+                                    <t t-if="l[0]">
+                                        <span t-esc="l[0]['nombre']"></span>
+                                    </t>
+                                </div>
+                                <div class="col-xs-2 text-right">
+                                    <t t-if="l[0]">
+                                        <span t-esc="l[0]['total']" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                    </t>
+                                </div>
+
+                                <div class="col-xs-2">
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <t t-if="l[1]">
+                                        <span t-esc="l[1]['nombre']"></span>
+                                    </t>
+                                </div>
+                                <div class="col-xs-2 text-right">
+                                    <t t-if="l[1]">
+                                        <span t-esc="l[1]['total']" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                    </t>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    Subtotal
+                                </div>
+                                <div class="col-xs-2 text-right">
+                                    <span t-esc="lineas(o)['totales'][0]" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                </div>
+
+                                <div class="col-xs-2">
+                                </div>
+
+                                <div class="col-xs-3">
+                                    Subtotal
+                                </div>
+                                <div class="col-xs-2 text-right">
+                                    <span t-esc="lineas(o)['totales'][1]" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/>
+                                </div>
+                            </div>
+
+                            <div class="row mt32">
+                                <p>Liquido a recibir: <span t-esc="lineas(o)['totales'][0] + lineas(o)['totales'][1]" t-esc-options='{"widget": "monetary", "display_currency": "o.company_id.currency_id"}'/></p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-5 col-xs-offset-7" style="border-top: 2px solid black">
+                                    <p class="text-center"><strong t-field="o.employee_id.name"></strong></p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-6 col-xs-offset-3">
+                                    <table class="table table-condensed">
+                                        <tbody>
+                                            <tr>
+                                                <td>CÓDIGO: F-OPS-24</td>
+                                                <td>VERSION: 02</td>
+                                                <td>FECHA: 10/02/15</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <p class="text-right">Fecha: <span t-field="o.move_id.date"/></p>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</openerp>
